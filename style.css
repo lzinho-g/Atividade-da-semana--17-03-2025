@@ -1,0 +1,154 @@
+/* Estilos gerais */
+:root {
+    --primary-color: #5d5fef;
+    --secondary-color: #6c63ff;
+    --text-color: #2d3748;
+    --bg-color: #f8f9fa;
+    --menu-bg: #ffffff;
+    --light-gray: #f7fafc;
+    --white: #ffffff;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+[data-theme="dark"] {
+    --primary-color: #7d8bff;
+    --secondary-color: #8a7cff;
+    --text-color: #f0f0f0;
+    --bg-color: #121212;
+    --menu-bg: #1e1e1e;
+    --light-gray: #2d2d2d;
+    --white: #2d2d2d;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Botão Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--menu-bg);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+/* Estilo do menu */
+.menu-elegant {
+    background: var(--menu-bg);
+    border-radius: 12px;
+    padding: 2rem 3rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 1.8rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.menu-list {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.menu-item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+    position: relative;
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.menu-item a:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(93, 95, 239, 0.25);
+    border-color: transparent;
+}
+
+.menu-item a:active {
+    transform: translateY(-2px);
+}
+
+/* Efeito de brilho no hover */
+.menu-item a:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.3) 100%
+    );
+    border-radius: 8px;
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -100px;
+    }
+    100% {
+        background-position: 100px;
+    }
+}
